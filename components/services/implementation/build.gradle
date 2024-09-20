@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.freefair.lombok' version "${freefairLombokVersion}"
+    id "org.springdoc.openapi-gradle-plugin" version "1.6.0"
+    id 'org.hidetake.swagger.generator' version '2.19.2'
+    id 'org.flywaydb.flyway' version '9.16.0'
+}
+
+group = 'org.platform'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //spring boot
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.data:spring-data-rest-core:3.7.9'
+
+    //db
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.6.2'
+    implementation "org.flywaydb:flyway-core"
+
+    //OpenAPI
+    swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.34'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
+
+
+    //Projects
+    implementation project(":interface")
+}
+
+test {
+    useJUnitPlatform()
+}

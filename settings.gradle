@@ -1,0 +1,13 @@
+rootProject.name = 'calculator'
+
+//common
+include ':exceptions'
+project(':exceptions').projectDir =file("components/common/exceptions")
+
+
+//services
+include ':implementation'
+include ':interface'
+project(':implementation').projectDir = file("components/services/implementation")
+project(':interface').projectDir = file("components/services/interface")
+
